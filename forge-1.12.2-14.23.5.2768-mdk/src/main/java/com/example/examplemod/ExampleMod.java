@@ -1,6 +1,9 @@
 package com.example.examplemod;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -15,11 +18,15 @@ public class ExampleMod
     public static final String VERSION = "1.0";
 
     private static Logger logger;
+    public static ToolMaterial myToolMaterial;
+    public static Item mySword;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         logger = event.getModLog();
+        myToolMaterial = EnumHelper.addToolMaterial("Super Sword", 4, 9999, 20.0F, 100.0F, 30);
+        mySword  = new CustomSword();
     }
 
     @EventHandler
